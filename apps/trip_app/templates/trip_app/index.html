@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'trip_app/css/style.css' %}">    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Let's Go On a Trip - Login and Registration</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="headerdash">
+            <h1>Where Do You Want To Go?</h1>
+            <h3>Please register or login</h3>
+        </div>
+        <div class="main row col-sm-8">
+        <div class="registration col-md-8">
+            <h1>Registration</h1>
+            <form action="register" class="form-group" method="post">
+                {% csrf_token %}
+                <p><label for="f_name" class="col-md-3 col-form-label">First Name:</label><input type="text" name="f_name">
+                {% if messages %}
+                    <span class="messages">
+                    {% for message in messages %}
+                        {% if 'f_name' in message.tags %}
+                            {{ message }}
+                        {% endif %}
+                    {% endfor %}
+                    </span></p>
+                {% endif %}
+                <p><label for="l_name" class="col-md-3 col-form-label">Last Name:</label><input type="text" name="l_name">
+                {% if messages %}
+                    <span class="messages">
+                    {% for message in messages %}
+                        {% if 'l_name' in message.tags %}
+                            {{ message }}
+                        {% endif %}
+                    {% endfor %}
+                </span></p>
+                {% endif %}
+                <p><label for="email" class="col-md-3 col-form-label">Email:</label><input type="text" name="email">
+                {% if messages %}
+                    <span class="messages">
+                    {% for message in messages %}
+                        {% if 'email' in message.tags %}
+                            {{ message }}
+                        {% endif %}
+                    {% endfor %}
+                </span></p>
+                {% endif %}
+                <p><label for="password" class="col-md-3 col-form-label">Password:</label><input type="password" name="password">
+                {% if messages %}
+                    <span class="messages">
+                    {% for message in messages %}
+                        {% if 'password' in message.tags %}
+                            {{ message }}
+                        {% endif %}
+                    {% endfor %}
+                </span></p>
+                {% endif %}
+                <p><label for="confirm" class="col-md-3 col-form-label">Confirm:</label><input type="password" name="confirm">
+                {% if messages %}
+                    <span class="messages">
+                    {% for message in messages %}
+                        {% if 'confirm' in message.tags %}
+                            {{ message }}
+                        {% endif %}
+                    {% endfor %}
+                </span></p>
+                {% endif %}
+                <div class="button">
+                    <p><input type="submit" class="btn btn-primary" value="Submit"></submit></p>
+                </div>
+            </form>
+        </div>
+        <div class="login col-md">
+            <h1>Login</h1>
+            <form action="login" method="post">
+                {% csrf_token %}
+                <p><label for="email" class="col-md-3 col-form-label">Email:</label><input type="text" name="email"></p>
+                <p><label for="password" class="col-md-3 col-form-label">Password:</label><input type="password" name="password"></p>
+                {% if messages %}
+                    <span class="messages">
+                    {% for message in messages %}
+                        {% if 'login' in message.tags %}
+                            {{ message }}
+                        {% endif %}
+                    {% endfor %}
+                </span>
+                {% endif %}
+                <div class="button">
+                    <p><input type="submit" class="btn btn-primary" value="Submit"></submit></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    
+</body>
+</html>

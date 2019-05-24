@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'trip_app/css/style.css' %}"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Edit Trip</title>
+</head>
+<body>
+    <div class="container col-sm-6 float-left">
+        <div class="header">
+            <div class="headerwelcome">
+                <h1>Edit Trip!</h1>
+            </div>
+            <div class="headerlinks float-right">
+                <a href="/dashboard">Dashboard</a>
+            </div>
+        </div>
+        <div class="main col-md-6">
+                <form action="/doedit" class="form-group" method="post">
+                        {% csrf_token %}
+                        <p><label for="destination" class="col-md-3 col-form-label">Destination:</label><input type="text" name="destination" value="{{trip.destination}}">
+                            {% if messages %}
+                                <span class="messages">
+                                    {% for message in messages %}
+                                        {% if 'destination' in message.tags %}
+                                            {{ message }}
+                                        {% endif %}
+                                    {% endfor %}
+                                </span></p>
+                            {% endif %}
+                            <p><label for="start" class="col-md-3 col-form-label">Start Date:</label><input type="date" name="start" value="{{start}}">
+                            {% if messages %}
+                                <span class="messages">
+                                    {% for message in messages %}
+                                        {% if 'start' in message.tags %}
+                                            {{ message }}
+                                        {% endif %}
+                                    {% endfor %}
+                                </span></p>
+                            {% endif %}
+                                <p><label for="end" class="col-md-3 col-form-label">End Date:</label><input type="date" name="end" value="{{end}}">
+                                {% if messages %}
+                                    <span class="messages">
+                                    {% for message in messages %}
+                                        {% if 'end' in message.tags %}
+                                            {{ message }}
+                                        {% endif %}
+                                    {% endfor %}
+                                </span></p>
+                                {% endif %}
+                                <p><label for="plan" class="col-md-3 col-form-label">Plan:</label><textarea type="textarea" name="plan"  value="{{trip.plan}}">{{trip.plan}}</textarea>
+                                {% if messages %}
+                                    <span class="messages">
+                                    {% for message in messages %}
+                                        {% if 'plan' in message.tags %}
+                                            {{ message }}
+                                        {% endif %}
+                                    {% endfor %}
+                                </span></p>
+                                {% endif %}
+                                <input type="hidden" name="id" value="{{trip.id}}">
+                                <div class="button text-center">
+                                    <p><input type="submit" class="btn btn-primary" value="Submit"></submit></p>
+                                </div>
+                            </form>
+        </div>
+    </div>
+</body>
+</html>

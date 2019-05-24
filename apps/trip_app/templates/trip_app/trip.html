@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'book_app/css/style.css' %}"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Trip</title>
+</head>
+<body>
+    <div class="container">
+            <div class="header">
+                <a href="/dashboard">Dashboard</a>
+                <a href="/logout">Logout</a>
+            </div>
+            <div class="desc">
+                <h1>Title: {{trip.destination}}</h1>
+                <div class="box">
+                    <h6>Start: {{trip.start}}</h6>
+                    <h6>End: {{trip.end}}</h6>
+                    <h6>Created: {{trip.created_at}}</h6>
+                    <h6>Last Updated: {{trip.updated_at}}</h6>
+                    <h6>Plan: {{trip.plan}}</h6>
+                    <h6>Created By: {{trip.creator.f_name}} {{trip.creator.l_name}}</h6>
+                </div>
+                <div class="box">
+                    Other Attendees:
+                    {% if attendees %}
+                        {% for x in attendees %}
+                            <li>
+                                {{x.f_name}} {{x.l_name}}
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                            {% if trip.creator.id == request.session.userid %}
+                            <h6>None Yet! Cheer up buddy! You'll find a travel buddy soon!</h6>
+                            {% else %}
+                            <h6>None Yet! You should join {{trip.creator.f_name}} {{trip.creator.l_name}} on this trip!</h6>       
+                            {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>    
+</body>
+</html>

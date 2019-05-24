@@ -1,0 +1,56 @@
+.container {
+
+}
+
+.main {
+    
+
+}
+
+.messages {
+    color: red;
+    display: inline-block;
+    font-size: 0.8rem;
+    margin-left: 10px;
+
+.form {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.list {
+    display: inline-block;
+}
+
+.headerdash {
+    width: 900px;
+    margin-bottom: 20px;
+
+
+}
+.header {
+    width: 450px;
+    margin-bottom: 20px;
+    
+}
+
+.headerlinks {
+    display: inline-block;
+}
+
+.headerwelcome {
+    display: inline-block;
+}
+
+
+
+
+textarea {
+    vertical-align: top;
+    width: 200px;
+    height: 100px;
+}
+
+.othertrips {
+    margin-top: 20px;
+}
